@@ -1,24 +1,28 @@
 #!/bin/bash
-cd C:\Users\nithinsharma.julakan\OneDrive - Cardinal Health\testing 
+cd C:\Users\nithinsharma.julakan\Downloads\t1
+
 git init
-current_branch = $(git branch)
-
-if [ "$current_branch" = "master" ]; then
-	git branch -m main
-fi
 
 
-git remote add origin https://github.com/nithin-julakanti/test.git
+current_branch=$(git branch)
+
+
+git branch -M main
+
+
+git remote | grep -q origin || git remote add origin https://github.com/nithin-julakanti/test.git
+
 git status
 git add .
-git commit
+git commit -m "moving the dags"
 git push -u origin main
 
-git_status = $(git status)
+git_status=$(git status)
 
 if [[ $git_status != *"nothing to commit, working tree clean"* ]]; then
 
-	git add .
-	git commit -m 'new dags and modified dags are commited"
-	git push origin main
+    git add .
+    git commit -m "new dags and modified dags are committed"
+    git push origin main
 fi
+echo "Successfully, dags have been copied to GitHub"
